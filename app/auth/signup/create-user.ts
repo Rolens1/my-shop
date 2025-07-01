@@ -1,23 +1,17 @@
 "use server"
 
-import { API_URL } from "@/app/constants/api"
-import { getErrorMessage } from "@/app/utils/errors"
+import { FormError } from "@/app/common/form-error.interface"
+import { post } from "@/app/utils/fetch"
 import { redirect } from "next/navigation"
 
 export default async function createUser(
-    _prevState: unknown, 
+    _prevState: FormError, 
     formData: FormData
 ) {
-    const res = await fetch(`${API_URL}/users`, {
-        method: "POST",
-        body: formData
-    })
-
-    const parsedRes = await res.json()
-    if(!res.ok) {
-        
-        return { error : getErrorMessage(parsedRes)}
+    const { error } = await post("users", formData)
+    if(error) {
+        return { error }
     }
-     redirect("/")
+    redirect('/')
 
 }

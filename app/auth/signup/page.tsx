@@ -4,10 +4,7 @@ import { Button, Link, Stack, TextField } from "@mui/material";
 import NextLink from "next/link";
 import { useFormState } from "react-dom";
 import createUser from "./create-user";
-import { error } from "console";
-
 export default function Signup() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, formAction] = useFormState(createUser, { error: "" });
 
   return (
