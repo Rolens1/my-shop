@@ -2,11 +2,12 @@
 
 import { Button, Stack, TextField, Link } from "@mui/material";
 import NextLink from "next/link";
-import { useFormState } from "react-dom";
+// import { useFormState } from "react-dom";
 import login from "./login";
+import { useActionState } from "react";
 
 export default function Login() {
-  const [state, formAction] = useFormState(login, { error: "" });
+  const [state, formAction] = useActionState(login, { error: "" });
 
   return (
     <form action={formAction} className="w-full max-w-xs">
