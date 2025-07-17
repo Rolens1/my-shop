@@ -1,6 +1,8 @@
 export interface Product {
-    id: string
+    _id?: string;
+    id?: string
     name: string
     description: string
-    price: number
+    price: number;
+    imageExists: boolean;
 }
